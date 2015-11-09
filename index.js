@@ -19,7 +19,7 @@ app.get('/cool', function(request,response) {
 });
 
 app.get('/lab8', function(req, res) {
-	res.send(lab8.html);
+	res.sendFile(__dirname + '/public/lab8.html');
 });
 
 
