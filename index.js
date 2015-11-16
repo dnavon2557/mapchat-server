@@ -1,5 +1,13 @@
 var cool = require('cool-ascii-faces');
-var cors = require('cors')
+/*var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'example.com');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+});
+*/
+var cors = require('cors');
 var express = require('express');
 var app = express();
 
@@ -16,9 +24,10 @@ var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
 });
 
 app.use(express.static(__dirname + '/public'));
-app.use(cors());
+//app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 
 // views is directory for all template files
@@ -26,7 +35,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
-app.post('*', function (request, response) {
+app.post('*', function (request, response, next) {
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
