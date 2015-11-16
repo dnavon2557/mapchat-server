@@ -48,10 +48,12 @@ app.post('*', function (request, response, next) {
 	};
 	db.collection('checkins', function(error, coll) {
 		var id = coll.insert(toInsert, function(error, saved) {
-			if (error)
+			if (error) {
 				response.send(500);
-			else
-				response.send(200);
+			} else{
+				response.status(200);
+				response.send(toInsert);
+			}
 		});
 	});
 });
