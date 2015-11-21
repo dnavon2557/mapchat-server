@@ -88,8 +88,8 @@ app.post('/sendLocation', function (request, response) {
 			"login": login,
 			"lat": lat,
 			"lng": lng,
-			"message": message
-	//		"created_at": created_at;
+			"message": message,
+			"created_at": created_at;
 		};
 		db.collection('checkins', function(error, coll) {
 			var id = coll.insert(toInsert, function(error, saved) {
