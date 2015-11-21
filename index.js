@@ -77,6 +77,8 @@ function update_logins() {
 	});
 }
 
+update_logins();
+
 app.post('*', function (request, response, next) {
 	var login = request.body.login;
 	var lat = request.body.lat;
