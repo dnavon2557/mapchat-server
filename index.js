@@ -94,9 +94,8 @@ app.post('/sendLocation', function (request, response) {
 				if (error) {
 					response.status(500);
 				} else{
-					var 
 					response.status(200);
-					response.send("test");
+					response.send(toInsert);
 				}
 			});
 		});
@@ -109,20 +108,6 @@ app.post('/sendLocation', function (request, response) {
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
-
-/*app.get('/latest.json') function(request, response) {
-	response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    login = request.body.login;
-    if (login == "") 
-    	{response.send({});}
-    else {
-    	db.collection("checkins", function (error, coll) {
-    		var latest = coll.find( {"login" : login});
-    		response.send(latest);
-    	});
-    } 
-}*/
 
 app.get('/cool', function(request,response) {
 	response.send(cool());
