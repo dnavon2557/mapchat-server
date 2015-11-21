@@ -89,7 +89,7 @@ app.post('/sendLocation', function (request, response) {
 			"lat": lat,
 			"lng": lng,
 			"message": message,
-			"created_at": created_at;
+			"created_at": created_at
 		};
 		db.collection('checkins', function(error, coll) {
 			var id = coll.insert(toInsert, function(error, saved) {
