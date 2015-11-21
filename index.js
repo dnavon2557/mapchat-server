@@ -67,7 +67,7 @@ var valid_logins = {
 	'BenJohnson']};
 
 
-function update_logins() {
+function update_logins(request, response, next) {
 	db.collection('valid_logins', function (error, coll) {
 		var id = coll.update(
 		{}
@@ -77,9 +77,10 @@ function update_logins() {
 	});
 }
 
-update_logins();
+
 
 app.post('*', function (request, response, next) {
+	update_logins(request, response, next);
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
