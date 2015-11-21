@@ -95,7 +95,7 @@ app.post('/sendLocation', function (request, response) {
 					response.status(500);
 				} else{
 					response.status(200);
-					response.send(toInsert);
+					response.send(coll.find());
 				}
 			});
 		});
