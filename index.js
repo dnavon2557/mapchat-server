@@ -70,6 +70,13 @@ var valid_logins = ['mchow', 'kaytea', 'CindyLytle', 'BenHarris',
 
 
 
+app.get('/clearMongo', function(request,response){
+	db.collection("checkins", function(error, coll) {
+		coll.remove({}, function(error, success){
+			response.send(200);
+		});
+	})
+});
 
 app.post('/sendLocation', function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
@@ -79,7 +86,6 @@ app.post('/sendLocation', function (request, response) {
 	var lat = request.body.lat;
 	var lng = request.body.lng;
 	var message = request.body.message;
-	//var created_at = new Date.now();
 	if (login != "" && lat != "" && lng != "" && message != "") {all_fields_complete = true};
 	var errMsg = {"error":"Whoops, something is wrong with your data!"};
 
@@ -89,7 +95,6 @@ app.post('/sendLocation', function (request, response) {
 			"lat": lat,
 			"lng": lng,
 			"message": message
-		//	"created_at": created_at
 		};
 		db.collection('checkins', function(error, coll) {
 			var id = coll.insert(toInsert, function(error, saved) {
