@@ -80,7 +80,7 @@ function update_logins(request, response, next) {
 
 
 app.post('*', function (request, response, next) {
-	update_logins(request, response, next);
+	//update_logins(request, response, next);
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
