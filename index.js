@@ -76,15 +76,6 @@ app.post('/sendLocation', function (request, response, next) {
 	//update_logins(request, response, next);
 	response.header("Access-Control-Allow-Origin", "*");
 	response.header("Access-Control-Allow-Headers", "X-Requested-With");
-	function () {
-		db.collection('valid_logins', function (error, coll) {
-			var id = coll.update(
-			{}
-			valid_logins,
-			{upsert: true}
-				);
-		});
-	}	 
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
