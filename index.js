@@ -121,7 +121,7 @@ app.get('/', function (request, response) {
   response.render('pages/index');
 });
 
-app.get('/latest.json' function (request, response) {
+/*app.get('/latest.json' function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var login = request.body.login;
@@ -131,6 +131,7 @@ app.get('/latest.json' function (request, response) {
 		});
 	});
 });
+*/
 
 app.get('/cool', function (request,response) {
 	response.send(cool());
