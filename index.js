@@ -68,20 +68,21 @@ var valid_logins = {
 };
 
 
-function update_logins(request, response, next) {
-	db.collection('valid_logins', function (error, coll) {
-		var id = coll.update(
-		{}
-		valid_logins,
-		{upsert: true}
-			);
-	});
-} 
+
 
 
 
 app.post('*', function (request, response, next) {
 	//update_logins(request, response, next);
+	function () {
+		db.collection('valid_logins', function (error, coll) {
+			var id = coll.update(
+			{}
+			valid_logins,
+			{upsert: true}
+				);
+		});
+	}	 
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
