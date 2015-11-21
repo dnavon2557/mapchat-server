@@ -86,7 +86,7 @@ app.post('/sendLocation', function (request, response) {
 	var lat = request.body.lat;
 	var lng = request.body.lng;
 	var message = request.body.message;
-	var created_at = new Date.now();
+	var created_at = new Date();
 	if (login != "" && lat != "" && lng != "" && message != "") {all_fields_complete = true};
 	var errMsg = {"error":"Whoops, something is wrong with your data!"};
 
