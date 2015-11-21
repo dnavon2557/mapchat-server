@@ -128,7 +128,7 @@ app.get('/latest.json' function (request, response) {
 	db.collection("checkins", function(error, coll) {
 		coll.find({"login":login}).sort({"created_at": -1}).toArray(function ( error2,data) {
 			response.send(data[0]);
-		}
+		});
 	});
 });
 
