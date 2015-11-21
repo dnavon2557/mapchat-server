@@ -72,7 +72,7 @@ var valid_logins = {
 
 
 
-app.post('/sendLocation', function (request, response, next) {
+app.post('/sendLocation', function (request, response) {
 	//update_logins(request, response, next);
 	response.header("Access-Control-Allow-Origin", "*");
 	response.header("Access-Control-Allow-Headers", "X-Requested-With");
