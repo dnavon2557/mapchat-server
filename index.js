@@ -88,7 +88,7 @@ app.post('/sendLocation', function (request, response) {
 			"login": login,
 			"lat": lat,
 			"lng": lng,
-			"message": message,
+			"message": message
 		//	"created_at": created_at
 		};
 		db.collection('checkins', function(error, coll) {
