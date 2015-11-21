@@ -117,15 +117,26 @@ app.post('/sendLocation', function (request, response) {
 	}
 });
 
-app.get('/', function(request, response) {
+app.get('/', function (request, response) {
   response.render('pages/index');
 });
 
-app.get('/cool', function(request,response) {
+app.get('/latest.json' function (request, response) {
+	response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	var login = request.body.login;
+	db.collection("checkins", function(error, coll) {
+		coll.find({"login":login}).sort({"created_at": -1}).toArray(function ( error2,data) {
+			response.send(data[0]);
+		}
+	});
+});
+
+app.get('/cool', function (request,response) {
 	response.send(cool());
 });
 
-app.get('/lab8', function(req, res) {
+app.get('/lab8', function (req, res) {
 	res.sendFile(__dirname + '/public/lab8.html');
 });
 
