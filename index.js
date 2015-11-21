@@ -64,9 +64,10 @@ var valid_logins = {
 	'BenKinsey', 'JanetScholl', 'PaulaLewis', 'LeslieMcFatter', 
 	'MatthewMcAda', 'LeeMuilman', 'KyleMoseley', 'JeffRhoden', 
 	'AnitaHolleman', 'JefflynMcKelvey', 'BobContreras', 'RobFitzgerald', 
-	'BenJohnson']};
+	'BenJohnson']
+};
 
-
+/*
 function update_logins() {
 	db.collection('valid_logins', function (error, coll) {
 		var id = coll.update(
@@ -75,7 +76,7 @@ function update_logins() {
 		{upsert: true}
 			);
 	});
-}
+} */
 
 
 
