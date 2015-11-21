@@ -35,7 +35,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
-
+/*
 var valid_logins = {
 	"login": ['mchow', 'kaytea', 'CindyLytle', 'BenHarris', 'JeremyMaletic', 
 	'LeeMiller', 'EricDapper', 'RichRumfelt', 'VanAmmerman', 'VicJohnson', 
@@ -77,7 +77,7 @@ function update_logins(request, response, next) {
 	});
 }
 
-
+*/
 
 app.post('*', function (request, response, next) {
 	//update_logins(request, response, next);
