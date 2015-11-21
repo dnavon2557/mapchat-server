@@ -7,7 +7,7 @@ var cool = require('cool-ascii-faces');
     next();
 });*/
 
-var cors = require('cors');
+//var cors = require('cors');
 var express = require('express');
 var app = express();
 
@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public'));
 //app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+//app.use(cors());
 
 
 // views is directory for all template files
@@ -72,8 +72,10 @@ var valid_logins = {
 
 
 
-app.post('*', function (request, response, next) {
+app.post('/sendLocation', function (request, response, next) {
 	//update_logins(request, response, next);
+	response.header("Access-Control-Allow-Origin", "*");
+	response.header("Access-Control-Allow-Headers", "X-Requested-With");
 	function () {
 		db.collection('valid_logins', function (error, coll) {
 			var id = coll.update(

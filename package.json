@@ -13,8 +13,7 @@
     "express": "4.13.3",
     "mongodb": "latest",
     "body-parser": "latest",
-    "validator": "latest",
-    "cors": "latest"
+    "validator": "latest"
   },
   "engines": {
     "node": "0.12.7"
