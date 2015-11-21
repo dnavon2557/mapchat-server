@@ -121,9 +121,6 @@ app.get('/', function (request, response) {
   response.render('pages/index');
 });
 
-app.get('/latest.json' function (request, response) {
-	response.send(200);
-});
 
 
 app.get('/cool', function (request,response) {
