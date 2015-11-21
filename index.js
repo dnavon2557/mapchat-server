@@ -36,7 +36,7 @@ app.set('view engine', 'ejs');
 
 
 
-var valid_logins = {
+/*var valid_logins = {
 	"login": ['mchow', 'kaytea', 'CindyLytle', 'BenHarris', 'JeremyMaletic', 
 	'LeeMiller', 'EricDapper', 'RichRumfelt', 'VanAmmerman', 'VicJohnson', 
 	'ErinHolleman', 'PatFitzgerald', 'CheriVasquez', 'HarleyRhoden', 
@@ -65,9 +65,9 @@ var valid_logins = {
 	'MatthewMcAda', 'LeeMuilman', 'KyleMoseley', 'JeffRhoden', 
 	'AnitaHolleman', 'JefflynMcKelvey', 'BobContreras', 'RobFitzgerald', 
 	'BenJohnson']};
+*/
 
-
-function update_logins() {
+/*function update_logins() {
 	db.collection('valid_logins', function (error, coll) {
 		var id = coll.update(
 		{}
@@ -75,7 +75,7 @@ function update_logins() {
 		{upsert: true}
 			);
 	});
-}
+}*/
 
 app.post('*', function (request, response, next) {
 	var login = request.body.login;
@@ -83,9 +83,9 @@ app.post('*', function (request, response, next) {
 	var lng = request.body.lng;
 	var message = request.body.message;
 	var errMsg = {"error":"Whoops, something is wrong with your data!"};
-	if (login == db.collection('valid_logins') function(error, coll){
+	/*if (login == db.collection('valid_logins') function(error, coll){
 		var id = coll.find( {'login':login});
-	}) {
+	}) {*/
 		var toInsert = {
 			"login": login,
 			"lat": lat,
@@ -102,9 +102,9 @@ app.post('*', function (request, response, next) {
 				}
 			});
 		});
-	} else {
+	/*} else {
 		response.send(errMsg);
-	}
+	}*/
 });
 
 app.get('/', function(request, response) {
