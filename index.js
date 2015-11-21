@@ -74,8 +74,10 @@ var valid_logins = {
 
 app.post('/sendLocation', function (request, response) {
 	//update_logins(request, response, next);
-	response.header("Access-Control-Allow-Origin", "*");
-	response.header("Access-Control-Allow-Headers", "X-Requested-With");
+	response.header('Access-Control-Allow-Origin', '*');
+	response.header('Access-Control-Allow-Credentials', true); 
+	response.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELTE, OPTIONS');
+	response.header('Access-Control-Allow-Headers', 'Content-Type');
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
