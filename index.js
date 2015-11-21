@@ -36,8 +36,7 @@ app.set('view engine', 'ejs');
 
 
 
-var valid_logins = {
-	"login": ['mchow', 'kaytea', 'CindyLytle', 'BenHarris', 'JeremyMaletic', 
+var valid_logins = ['mchow', 'kaytea', 'CindyLytle', 'BenHarris', 'JeremyMaletic', 
 	'LeeMiller', 'EricDapper', 'RichRumfelt', 'VanAmmerman', 'VicJohnson', 
 	'ErinHolleman', 'PatFitzgerald', 'CheriVasquez', 'HarleyRhoden', 
 	'JanetGage', 'HarleyConnell', 'GlendaMaletic', 'JeffSoulen', 'MarkHair', 
@@ -64,8 +63,7 @@ var valid_logins = {
 	'BenKinsey', 'JanetScholl', 'PaulaLewis', 'LeslieMcFatter', 
 	'MatthewMcAda', 'LeeMuilman', 'KyleMoseley', 'JeffRhoden', 
 	'AnitaHolleman', 'JefflynMcKelvey', 'BobContreras', 'RobFitzgerald', 
-	'BenJohnson']
-};
+	'BenJohnson'];
 
 
 
@@ -75,11 +73,15 @@ var valid_logins = {
 app.post('/sendLocation', function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    var all_fields_complete = false;
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
 	var message = request.body.message;
+	if (login != "" and lat != "" and lng != "" and message != "") {all_fields_complete = true};
 	var errMsg = {"error":"Whoops, something is wrong with your data!"};
+
+	if (valid_logins.indexOf(login) > -1 and all_fields_complete) {
 		var toInsert = {
 			"login": login,
 			"lat": lat,
@@ -96,6 +98,10 @@ app.post('/sendLocation', function (request, response) {
 				}
 			});
 		});
+	} else {
+		response.status(400);
+		response.send(errMsg);
+	}
 });
 
 app.get('/', function(request, response) {
