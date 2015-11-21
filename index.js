@@ -96,7 +96,7 @@ app.post('/sendLocation', function (request, response) {
 				} else{
 					var 
 					response.status(200);
-					response.send(coll.find());
+					response.send(toInsert);
 				}
 			});
 		});
