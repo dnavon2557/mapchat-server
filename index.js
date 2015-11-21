@@ -125,6 +125,7 @@ app.get('/latest.json' function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var login = request.body.login;
+	response.send(200);
 });
 
 
