@@ -36,7 +36,8 @@ app.set('view engine', 'ejs');
 
 
 
-var valid_logins = ['mchow', 'kaytea', 'CindyLytle', 'BenHarris', 'JeremyMaletic', 
+var valid_logins = ['mchow', 'kaytea', 'CindyLytle', 'BenHarris',
+	'JeremyMaletic', 
 	'LeeMiller', 'EricDapper', 'RichRumfelt', 'VanAmmerman', 'VicJohnson', 
 	'ErinHolleman', 'PatFitzgerald', 'CheriVasquez', 'HarleyRhoden', 
 	'JanetGage', 'HarleyConnell', 'GlendaMaletic', 'JeffSoulen', 'MarkHair', 
@@ -78,10 +79,10 @@ app.post('/sendLocation', function (request, response) {
 	var lat = request.body.lat;
 	var lng = request.body.lng;
 	var message = request.body.message;
-	if (login != "" and lat != "" and lng != "" and message != "") {all_fields_complete = true};
+	if (login != "" && lat != "" && lng != "" && message != "") {all_fields_complete = true};
 	var errMsg = {"error":"Whoops, something is wrong with your data!"};
 
-	if (valid_logins.indexOf(login) > -1 and all_fields_complete) {
+	if (valid_logins.indexOf(login) > -1 && all_fields_complete) {
 		var toInsert = {
 			"login": login,
 			"lat": lat,
