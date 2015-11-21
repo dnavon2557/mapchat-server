@@ -72,20 +72,14 @@ var valid_logins = {
 
 
 
-app.post('/sendLocation', function (request, response, next) {
-	//update_logins(request, response, next);
-	response.header('Access-Control-Allow-Origin', '*');
-	response.header('Access-Control-Allow-Credentials', true); 
-	response.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELTE, OPTIONS');
-	response.header('Access-Control-Allow-Headers', 'Content-Type');
+app.post('/sendLocation', function (request, response) {
+	response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var login = request.body.login;
 	var lat = request.body.lat;
 	var lng = request.body.lng;
 	var message = request.body.message;
 	var errMsg = {"error":"Whoops, something is wrong with your data!"};
-	/*if (login == db.collection('valid_logins') function(error, coll){
-		var id = coll.find( {'login':login});
-	}) {*/
 		var toInsert = {
 			"login": login,
 			"lat": lat,
@@ -102,10 +96,6 @@ app.post('/sendLocation', function (request, response, next) {
 				}
 			});
 		});
-//	} else {
-//		response.send(errMsg);
-//	}
-next();
 });
 
 app.get('/', function(request, response) {
