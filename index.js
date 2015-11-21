@@ -86,9 +86,9 @@ app.post('*', function (request, response, next) {
 	var lng = request.body.lng;
 	var message = request.body.message;
 	var errMsg = {"error":"Whoops, something is wrong with your data!"};
-	if (login == db.collection('valid_logins') function(error, coll){
+	/*if (login == db.collection('valid_logins') function(error, coll){
 		var id = coll.find( {'login':login});
-	}) {
+	}) {*/
 		var toInsert = {
 			"login": login,
 			"lat": lat,
@@ -105,9 +105,9 @@ app.post('*', function (request, response, next) {
 				}
 			});
 		});
-	} else {
-		response.send(errMsg);
-	}
+//	} else {
+//		response.send(errMsg);
+//	}
 });
 
 app.get('/', function(request, response) {
