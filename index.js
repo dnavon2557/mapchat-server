@@ -72,7 +72,7 @@ var valid_logins = {
 
 
 
-app.post('/sendLocation', function (request, response) {
+app.post('/sendLocation', function (request, response, next) {
 	//update_logins(request, response, next);
 	response.header('Access-Control-Allow-Origin', '*');
 	response.header('Access-Control-Allow-Credentials', true); 
@@ -105,6 +105,7 @@ app.post('/sendLocation', function (request, response) {
 //	} else {
 //		response.send(errMsg);
 //	}
+next();
 });
 
 app.get('/', function(request, response) {
