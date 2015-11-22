@@ -78,6 +78,10 @@ app.get('/clearMongo', function(request,response){
 	})
 });
 
+app.get('latest.json', function (request, response) {
+	response.send(200);
+});
+
 app.post('/sendLocation', function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
