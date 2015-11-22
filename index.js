@@ -126,7 +126,7 @@ app.get('/', function (request, response) {
   db.collection('checkins', function (error1, coll) {
   	coll.find().sort({"created_at":-1}).toArray(function (error2, data){
   		response.send(data);
-  		for(var i = 0; i < data.length; i++) {
+  		/*for(var i = 0; i < data.length; i++) {
   			var login = data[i]['login'];
   			var message = data[i]['message'];
   			var lat = data[i]['lat'];
@@ -134,7 +134,7 @@ app.get('/', function (request, response) {
   			var created_at = data[i]['created_at'];
   			var info_str = login+ " checked in at " +lat+ ", " +lng+ " on " +created_at+ " and wrote " +message;
   			html += "<p>" +info_str+ "</p>";
-  		}
+  		}*/
   		html += "</body></html>";
   		response.send(html);
   	});
