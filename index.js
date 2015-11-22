@@ -59,13 +59,6 @@ var valid_logins = ['mchow', 'kaytea', 'CindyLytle', 'BenHarris',
 
 
 
-app.get('/clearMongo', function(request,response){
-	db.collection("checkins", function(error, coll) {
-		coll.remove({}, function(error, success){
-			response.send(200);
-		});
-	})
-});
 
 app.get('/latest.json', function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
