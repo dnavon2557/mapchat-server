@@ -70,7 +70,7 @@ app.get('/clearMongo', function(request,response){
 app.get('/latest.json', function (request, response) {
 	var login = request.body.login;
 	db.collection('checkins', function(error1, coll) {
-		coll.find({"login":login}).sort({"created_at":-1})toArray( function (error2, data) {
+		coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
 			response.send(data[0]);
 		});
 	});
