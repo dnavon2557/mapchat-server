@@ -74,7 +74,7 @@ app.get('/latest.json', function (request, response) {
 			response.send(data);
 		}); */
 		coll.find({}).toArray( function (error2, data) {
-			response.send(data);
+			response.send(login);
 		});
 	});
 });
