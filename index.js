@@ -78,7 +78,7 @@ app.get('/clearMongo', function(request,response){
 	})
 });
 
-app.get('latest.json', function (request, response) {
+app.get('/latest.json', function (request, response) {
 	response.send(200);
 });
 
