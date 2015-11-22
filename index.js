@@ -67,7 +67,7 @@ app.get('/clearMongo', function(request,response){
 	})
 });
 
-app.get('/latest.json*', function (request, response) {
+app.get('/latest.json', function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var login = request.body.login;
@@ -122,12 +122,8 @@ app.post('/sendLocation', function (request, response) {
 });
 
 app.get('/', function (request, response) {
-	var html = "<!doctype html>
-	<html>
-	<head></head>
-	<body>
-	";
-  db.collection('checkins', function(error1, coll) {
+	var html = "<!doctype html><html><head></head><body>";
+  db.collection('checkins', function (error1, coll) {
   	coll.find().sort({"created_at":-1}).toArray(function (error2, data){
   		for(var i = 0; i < data.length(); i++) {
   			var login = data[i]['login'];
@@ -138,7 +134,7 @@ app.get('/', function (request, response) {
   			var info_str = login+ " checked in at " +lat+ ", " +lng+ " on " +created_at+ " and wrote " +message;
   			html += "<p>" +info_str+ "</p>";
   		}
-  		html += "</html>";
+  		html += "</body></html>";
   		response.send(html);
   	});
   });
