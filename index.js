@@ -79,6 +79,7 @@ app.get('/clearMongo', function(request,response){
 });
 
 app.get('/latest.json', function (request, response) {
+	var login = request.body.login;
 	response.send(200);
 });
 
