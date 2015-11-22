@@ -74,7 +74,7 @@ app.get('/latest.json', function (request, response) {
 	var loginJSON = {
 		"login":login
 	}
-	response.send(loginJSON);
+	response.send(loginJSON['login']);
 	db.collection('checkins', function (error1, coll) {
 		/*coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
 			response.send(data);
