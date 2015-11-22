@@ -75,7 +75,7 @@ app.get('/latest.json', function (request, response) {
 		/*coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
 			response.send(data);
 		}); */
-		coll.find({}).toArray( function (error2, data) {
+		coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
 			response.status(200);
 			response.send(data);
 		});
