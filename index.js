@@ -80,7 +80,11 @@ app.get('/clearMongo', function(request,response){
 
 app.get('/latest.json', function (request, response) {
 	var login = request.body.login;
-	response.send(200);
+	db.collection('checkins', function(error1, coll) {
+		coll.find({"login":login}).toArray( function (error2, data) {
+			response.send(data);
+		});
+	});
 });
 
 app.post('/sendLocation', function (request, response) {
