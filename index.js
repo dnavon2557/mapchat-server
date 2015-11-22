@@ -71,11 +71,15 @@ app.get('/latest.json*', function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var login = request.body.login;
-	db.collection('checkins', function (error1, coll) {
-		coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
-			response.send(data[0]);
-		}); 
-	});
+	if(login != ""){
+		db.collection('checkins', function (error1, coll) {
+			coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
+				response.send(data[0]);
+			}); 
+		});
+	} else {
+		response.send({});
+	}
 });
 
 app.post('/sendLocation', function (request, response) {
@@ -118,7 +122,27 @@ app.post('/sendLocation', function (request, response) {
 });
 
 app.get('/', function (request, response) {
-  response.render('pages/index');
+	var html = "<!doctype html>
+	<html>
+	<head></head>
+	<body>
+	";
+  db.collection('checkins', function(error1, coll) {
+  	coll.find().sort({"created_at":-1}).toArray(function (error2, data){
+  		for(var i = 0; i < data.length(); i++) {
+  			var login = data[i]['login'];
+  			var message = data[i]['message'];
+  			var lat = data[i]['lat'];
+  			var lng = data[i]['lng'];
+  			var created_at = data[i]['created_at'];
+  			var info_str = login+ " checked in at " +lat+ ", " +lng+ " on " +created_at+ " and wrote " +message;
+  			html += "<p>" +info_str+ "</p>";
+  		}
+  		html += "</html>";
+  		response.send(html);
+  	});
+  });
+
 });
 
 
