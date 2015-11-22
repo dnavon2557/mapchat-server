@@ -1,13 +1,4 @@
 var cool = require('cool-ascii-faces');
-/*var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'example.com');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-
-    next();
-});*/
-
-//var cors = require('cors');
 var express = require('express');
 var app = express();
 
@@ -24,10 +15,8 @@ var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
 });
 
 app.use(express.static(__dirname + '/public'));
-//app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(cors());
 
 
 // views is directory for all template files
@@ -81,8 +70,8 @@ app.get('/clearMongo', function(request,response){
 app.get('/latest.json', function (request, response) {
 	var login = request.body.login;
 	db.collection('checkins', function(error1, coll) {
-		coll.find({"login":login}).toArray( function (error2, data) {
-			response.send(data);
+		coll.find({"login":login}).sort({"created_at":-1})toArray( function (error2, data) {
+			response.send(data[0]);
 		});
 	});
 });
