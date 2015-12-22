@@ -1,0 +1,29 @@
+					README
+AUTHOR: Daniel Navon
+LAST MODIFIED: 11/21/2015
+DESCRIPTION: An Api that uses node.js, express, and mongo to store users and 
+information sent through post requests. When root is loaded a page containing
+all the data in html is returned. Users can also use methods to retreive 
+their latest info.
+IMPLEMENTATION: 
+
+The POST /sendLocation method receives a login, latitude, longitude, and 
+message. If the login is one of a list of valid logins then the parameters 
+are all inserted into a mongodb collection named checkins. If any of the 
+parameters are missing or the login is not valid then an error message is 
+returned.
+
+The GET /latest.json method recieves a login. The checkins collection is 
+searched for all documents with that login name and outputs a sorted list 
+of these documents. The first item of the list is sent back as a response.
+ If the login is not found or no login is sent then empty json data is sent
+  back as a response.
+
+The GET / method retrieves all the documents from the mongodb checkins 
+collection in sorted order and then parses the json data into a readable 
+string. the readable string is added to an html doc as a <p> (paragraph) 
+tag and then the final html doc is served as response text. 
+
+TIME SPENT: 10 hours
+
+AWKNOWLEDGEMENTS: based on the intial work of the node-js-getting-started template
