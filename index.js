@@ -63,12 +63,10 @@ var valid_logins = ['mchow', 'kaytea', 'CindyLytle', 'BenHarris',
 app.get('/latest.json', function (request, response) {
 	response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	var login = request.body.login;
+	var login = request.query.login;
 	if(login != ""){
 		db.collection('checkins', function (error1, coll) {
-			coll.find({"login":login}, function(err, results) {
-				
-			}).sort({"created_at":-1}).toArray( function (error2, data) {
+			coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
 				response.send(data[0]);
 			}); 
 		});
