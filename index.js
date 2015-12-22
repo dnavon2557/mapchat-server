@@ -66,7 +66,9 @@ app.get('/latest.json', function (request, response) {
 	var login = request.body.login;
 	if(login != ""){
 		db.collection('checkins', function (error1, coll) {
-			coll.find({"login":login}).sort({"created_at":-1}).toArray( function (error2, data) {
+			coll.find({"login":login}, function(err, results) {
+				
+			}).sort({"created_at":-1}).toArray( function (error2, data) {
 				response.send(data[0]);
 			}); 
 		});
